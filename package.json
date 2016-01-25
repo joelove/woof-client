@@ -2,7 +2,7 @@
   "name": "woof-client",
   "version": "1.0.0",
   "description": "A command line WOOF client built with Node.js",
-  "main": "run.js",
+  "main": "lib/run.js",
   "scripts": {
     "test": "NODE_ENV=test mocha --compilers js:babel-core/register --recursive",
     "build": "babel src -d lib",
