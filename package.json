@@ -18,6 +18,6 @@
   "homepage": "https://github.com/joelove/woof-client#readme",
   "preferGlobal": true,
   "bin": {
-    "filesearch": "run.js"
+    "woof": "run.js"
   }
 }
