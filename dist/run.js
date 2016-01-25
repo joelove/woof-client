@@ -10,7 +10,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var client = _net2.default.connect('1111', 'lemondigits.com');
 
 client.on('data', function (data) {
-  console.log('' + data);
+  console.log(data.toString());
   process.stdin.once('data', function (chunk) {
     client.write(chunk.toString());
   });
