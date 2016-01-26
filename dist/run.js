@@ -13,88 +13,53 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var screen = _blessed2.default.screen({ smartCSR: true });
 var client = _net2.default.connect('1111', 'lemondigits.com');
+var theme = require('../themes/default.json');
 
-var buffer = _blessed2.default.text({
-  top: 0,
-  left: 0,
-  width: '80%',
-  height: '100%-2',
-  scrollable: true,
-  style: {
-    fg: 'black',
-    bg: '#f0f0f0'
-  }
-});
+var buffer = _blessed2.default.text(theme.buffer);
+var input = _blessed2.default.textbox(theme.input);
+var sidebar = _blessed2.default.list(theme.sidebar);
+var statusbar = _blessed2.default.box(theme.statusbar);
 
-var input = _blessed2.default.textbox({
-  bottom: 1,
-  left: 0,
-  width: '80%',
-  height: 1,
-  inputOnFocus: true,
-  style: {
-    fg: 'black',
-    bg: '#d3d3d3',
-    hover: {
-      bg: '#b3b3b3'
-    },
-    focus: {
-      bg: '#b3b3b3'
-    }
-  }
-});
+var exit = function exit() {
+  return process.exit(0);
+};
+var connected = function connected() {
+  return append('Connection established!');
+};
 
-var sidebar = _blessed2.default.list({
-  right: 0,
-  top: 0,
-  width: '20%',
-  height: '100%-1',
-  style: {
-    fg: 'black',
-    bg: '#fafafa'
-  }
-});
+var append = function append(data) {
+  buffer.pushLine(data.toString());
+  screen.render();
+};
 
-var statusbar = _blessed2.default.box({
-  bottom: 0,
-  width: '100%',
-  height: 1,
-  style: {
-    fg: 'black',
-    bg: '#999999'
-  }
-});
+var focus = function focus() {
+  input.focus();
+  screen.render();
+};
+
+var clear = function clear() {
+  input.clearValue();
+  focus();
+};
+
+var write = function write() {
+  client.write(input.getContent());
+  clear();
+};
+
+input.on('click', focus);
+input.key(['escape'], exit);
+input.key('enter', write);
+
+client.on('data', append);
+client.on('connect', connected);
+client.on('end', exit);
 
 screen.title = 'WOOF';
 screen.append(buffer);
 screen.append(input);
 screen.append(sidebar);
 screen.append(statusbar);
-
-input.on('click', function (data) {
-  input.focus();
-  screen.render();
-});
-
-screen.key(['escape', 'C-c'], function (ch, key) {
-  return process.exit(0);
-});
-
-client.on('data', function (data) {
-  buffer.pushLine(data.toString());
-  screen.render();
-}).on('connect', function () {
-  // console.log('Connected!');
-}).on('end', function () {
-  // console.log('Disconnected!');
-});
-
-input.key('enter', function (ch, key) {
-  client.write(input.getContent());
-  input.clearValue();
-  input.focus();
-  screen.render();
-});
 
 input.focus();
 screen.render();
