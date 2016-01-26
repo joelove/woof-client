@@ -15,7 +15,7 @@ var screen = _blessed2.default.screen({ smartCSR: true });
 var client = _net2.default.connect('1111', 'lemondigits.com');
 var theme = require('../themes/default.json');
 
-var buffer = _blessed2.default.text(theme.buffer);
+var buffer = _blessed2.default.box(theme.buffer);
 var input = _blessed2.default.textbox(theme.input);
 var sidebar = _blessed2.default.list(theme.sidebar);
 var statusbar = _blessed2.default.box(theme.statusbar);

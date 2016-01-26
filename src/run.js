@@ -7,7 +7,7 @@ const screen = blessed.screen({ smartCSR: true });
 const client = net.connect('1111', 'lemondigits.com');
 const theme = require('../themes/default.json');
 
-const buffer = blessed.text(theme.buffer);
+const buffer = blessed.box(theme.buffer);
 const input = blessed.textbox(theme.input);
 const sidebar = blessed.list(theme.sidebar);
 const statusbar = blessed.box(theme.statusbar);

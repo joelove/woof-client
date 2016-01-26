@@ -5,9 +5,15 @@
     "width": "80%",
     "height": "100%-2",
     "scrollable": true,
+    "scrollbar": true,
+    "alwaysScroll": true,
     "style": {
-      "fg": "black",
-      "bg": "#f0f0f0"
+      "fg": "#acacac",
+      "bg": "#101010",
+      "scrollbar": {
+        "bg": "blue",
+        "fg": "white"
+      }
     }
   },
   "input": {
@@ -17,13 +23,13 @@
     "height": 1,
     "inputOnFocus": true,
     "style": {
-      "fg": "black",
-      "bg": "#d3d3d3",
+      "fg": "#000000",
+      "bg": "#c0c0c0",
       "hover": {
-        "bg": "#b3b3b3"
+        "bg": "#c0c0c0"
       },
       "focus": {
-        "bg": "#b3b3b3"
+        "bg": "#c0c0c0"
       }
     }
   },
@@ -33,8 +39,8 @@
     "width": "20%",
     "height": "100%-1",
     "style": {
-      "fg": "black",
-      "bg": "#fafafa"
+      "fg": "#acacac",
+      "bg": "#404040"
     }
   },
   "statusbar": {
@@ -42,8 +48,8 @@
     "width": "100%",
     "height": 1,
     "style": {
-      "fg": "black",
-      "bg": "#999999"
+      "fg": "#acacac",
+      "bg": "#606060"
     }
   }
 }
