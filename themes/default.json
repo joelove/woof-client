@@ -31,7 +31,8 @@
       "focus": {
         "bg": "#c0c0c0"
       }
-    }
+    },
+    "focused": true
   },
   "sidebar": {
     "right": 0,
@@ -51,5 +52,14 @@
       "fg": "#acacac",
       "bg": "#606060"
     }
+  },
+  "log": {
+    "fg": "#101010",
+    "selectedFg": "#101010",
+    "bg": "#cfcfcf",
+    "label": "Log",
+    "height": 8,
+    "width": "80%",
+    "scrollable": true
   }
 }

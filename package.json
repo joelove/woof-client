@@ -35,6 +35,7 @@
     "sinon": "^1.17.2"
   },
   "dependencies": {
-    "blessed": "^0.1.81"
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^2.5.3"
   }
 }
