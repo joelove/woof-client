@@ -17,14 +17,19 @@ var _default = require('../themes/default');
 
 var _default2 = _interopRequireDefault(_default);
 
+var _config = require('../config');
+
+var _config2 = _interopRequireDefault(_config);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var screen = _blessed2.default.screen({ smartCSR: true });
-var input = _blessed2.default.textbox(_default2.default.input);
+var input = _blessed2.default.textarea(_default2.default.input);
 var buffer = _blessed2.default.box(_default2.default.buffer);
 var sidebar = _blessed2.default.list(_default2.default.sidebar);
 var statusbar = _blessed2.default.box(_default2.default.statusbar);
 var log = _blessedContrib2.default.log(_default2.default.log);
+var client = _net2.default.connect(_config2.default.port, _config2.default.server);
 
 var exit = function exit() {
   return process.exit(0);
@@ -37,16 +42,17 @@ var connected = function connected() {
 };
 
 var append = function append(data) {
-  log.log('DATA:' + data);
   buffer.pushLine(data.toString());
+  buffer.setScrollPerc(100);
+  log.log('DATA: ' + data.toString());
 };
 
 var write = function write() {
   var line = input.getContent();
-  log.log('INPUT:' + line);
-  client.write(line);
+  client.write(line + '\n');
   input.clearValue();
   focus();
+  log.log('INPUT: ' + line + '\n');
 };
 
 screen.title = 'WOOF';
@@ -60,8 +66,6 @@ screen.append(log);
 input.on('click', focus);
 input.key('enter', write);
 input.focus();
-
-var client = _net2.default.connect('1111', 'lemondigits.com');
 
 client.on('data', append);
 client.on('connect', connected);
