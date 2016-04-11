@@ -58,7 +58,7 @@
     "selectedFg": "#101010",
     "bg": "#cfcfcf",
     "label": "Log",
-    "height": 8,
+    "height": 0,
     "width": "80%",
     "scrollable": true
   }
