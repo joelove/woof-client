@@ -30,7 +30,7 @@ npm start
 
 ### Building the app
 
-This application is written in ES6/7 and should be transpiled using Babel before release. To build the `src` directory to `dist`, use:
+This application is written in ES6/7 and should be transpiled using [Babel](https://babeljs.io/) before release. To build the `src` directory to `dist`, use:
 
 ```
 npm run build
@@ -38,8 +38,16 @@ npm run build
 
 ### Running the tests
 
-The app is tested using [Mocha](https://mochajs.org/), [Chai](http://chaijs.com/) and [Sinon](http://sinonjs.org/). To run the tests, use:
+The app is tested using [Mocha](https://mochajs.org/), [Chai](http://chaijs.com/) and [Sinon](http://sinonjs.org/). All tests should be passing before the application is released. To run the tests, use:
 
 ```
 npm run test
+```
+
+### Code quality
+
+The code in this application is linted (audited) using [ESLint](http://eslint.org/) with the [AirBnb config](https://www.npmjs.com/package/eslint-config-airbnb). All code should be passing the linter before the applicaiton is released. To run ESLint, use:
+
+```
+npm run lint
 ```
